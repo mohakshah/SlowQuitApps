@@ -6,7 +6,7 @@
 + (NSUserDefaults *)defaults {
     static BOOL defaultsRegistered;
     if (!defaultsRegistered) {
-        [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"delay": @1000, @"whitelist": @[], @"invertList": @NO}];
+        [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"delay": @1000, @"whitelist": @[], @"disabledByDefault": @NO}];
         defaultsRegistered = YES;
     }
     return [NSUserDefaults standardUserDefaults];
@@ -31,12 +31,12 @@
     return whitelist;
 }
 
-+ (BOOL)invertList {
-    static BOOL invertList;
-    if (!invertList) {
-        invertList = [[self defaults] boolForKey:@"invertList"];
++ (BOOL)disabledByDefault {
+    static BOOL disabledByDefault;
+    if (!disabledByDefault) {
+        disabledByDefault = [[self defaults] boolForKey:@"disabledByDefault"];
     }
-    return invertList;
+    return disabledByDefault;
 }
 
 @end

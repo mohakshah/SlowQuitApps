@@ -99,13 +99,13 @@ BOOL shouldHandleCmdQ() {
         return NO;
     }
 
-    BOOL invertList = [SQAPreferences invertList];
+    BOOL disabledByDefault = [SQAPreferences disabledByDefault];
     for (NSString *bundleId in [SQAPreferences whitelist]) {
         if ([activeApp.bundleIdentifier isEqualToString:bundleId]) {
-            return (invertList ?  YES : NO);
+            return (disabledByDefault ?  YES : NO);
         }
     }
-    return (invertList ?  NO : YES);
+    return (disabledByDefault ?  NO : YES);
 }
 
 OSStatus cmdQHandler(EventHandlerCallRef nextHandler, EventRef anEvent, void *userData) {

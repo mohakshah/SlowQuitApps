@@ -104,3 +104,11 @@ To reset the whitelist:
 To check whitelisted apps:
 
     $ defaults read com.dteoh.SlowQuitApps whitelist
+
+### Disable by defaults
+You can change the operation mode of the app so that it sends Cmd-Q directly to all apps by default and only adds delay to the apps listed in the whitelist. To do this, you must set the `disabledByDefault` property to `true` like so:
+```bash
+defaults write com.dteoh.SlowQuitApps disabledByDefault -bool true
+```
+
+Setting this property to `false` will reset the behaviour back to normal.
